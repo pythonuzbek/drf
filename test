@@ -1,0 +1,5 @@
+learn_drf/
+      apps/
+        tests.py/
+      settings.py
+      manage.py

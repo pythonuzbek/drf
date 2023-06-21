@@ -8,25 +8,28 @@ from apps.models import Product, Category
 from apps.serializers import ProductModelSerializer, CategoryModelSerializer
 
 
-class ProductAPIView(APIView):
-    def get(self, request):
-        products = Product.objects.all()
-        serializer = ProductModelSerializer(products, many=True)
-        return Response(serializer.data)
-
-    @swagger_auto_schema(request_body=ProductModelSerializer)
-    def post(self, request):
-        product = ProductModelSerializer(data=request.data)
-        product.is_valid(raise_exception=True)
-        product.save()
-        return Response(product.data)
+# class ProductAPIView(APIView):
+#     def get(self, request):
+#         products = Product.objects.all()
+#         serializer = ProductModelSerializer(products, many=True)
+#         return Response(serializer.data)
+#
+#     @swagger_auto_schema(request_body=ProductModelSerializer)
+#     def post(self, request):
+#         product = ProductModelSerializer(data=request.data)
+#         product.is_valid(raise_exception=True)
+#         product.save()
+#         return Response(product.data)
 
 #
-# class CategoryAPIView(APIView):
-#     def get(self, request):
-#         categories = Category.objects.all()
-#         serializer = CategoryModelSerializer(categories,many=True)
-#         return Response(serializer.data)
+class CategoryAPIView(ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategoryModelSerializer
+
+    # def get(self, request):
+    #     categories = Category.objects.all()
+    #     serializer = CategoryModelSerializer(categories,many=True)
+    #     return Response(serializer.data)
 
 
 # class ProductAPIView(ModelViewSet):
