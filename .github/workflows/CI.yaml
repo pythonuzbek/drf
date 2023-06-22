@@ -1,0 +1,20 @@
+name: Django API
+
+on: [ push ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-22.04
+    env:
+      DJANGO_SETTINGS_MODULE=root.settings:
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.10
+      - name: Install Requirements
+        run: pip3 install -r requirements.txt
+      - name: Run Tests
+        run: pytest
+
+
