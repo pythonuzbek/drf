@@ -5,8 +5,7 @@ on: [ push ]
 jobs:
   run-tests:
     runs-on: ubuntu-22.04
-    environment:
-      DJANGO_SETTINGS_MODULE=root.settings
+    env: "DJANGO_SETTINGS_MODULE=root.settings"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
